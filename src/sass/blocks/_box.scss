@@ -1,0 +1,62 @@
+.box {
+  height: $box-height;
+  width: $box-height;
+  overflow: hidden;
+  border-radius: 35px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top:calc(-1 * $box-height / 2);
+  margin-left: calc(-1 * $box-height / 2);
+  animation: animatedBox $animation-duration * 2 infinite alternate;
+  &::after {
+    position: relative;
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $view-height;
+    background: linear-gradient($degree, $color1 0%, $color2 25%, $color3 50%, $color2 75%, $color1 100%);
+    animation: animatedLinearGradient $animation-duration * 2 infinite linear;
+  }
+}
+
+@keyframes animatedLinearGradient {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: $box-height - $view-height;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes animatedBox {
+  0% {
+    transform: scale(0);
+    border-radius: 35px;
+  }
+  2% {
+    transform: scale(1.1);
+    border-radius: 50%;
+  }
+  5% {
+    transform: scale(1);
+    border-radius: 35px;
+  }
+  96% {
+    transform: scale(1);
+    border-radius: 35px;
+  }
+  98% {
+    transform: scale(1.1);
+    border-radius: 50%;
+  }
+  100% {
+    transform: scale(0);
+  }
+
+}
